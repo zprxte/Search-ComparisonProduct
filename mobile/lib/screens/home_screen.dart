@@ -209,9 +209,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-/// รายการสาขา DTC Shop
-/// wireframe วาดเป็นแผนที่ + รายการ แต่แผนที่ต้องลง package flutter_map เพิ่ม
-/// จึงทำเฉพาะรายการไปก่อน (ข้อมูลชุดเดียวกัน)
+// รายการสาขา DTC Shop
+// wireframe วาดเป็นแผนที่ + รายการ แต่แผนที่ต้องลง package flutter_map เพิ่ม
+// จึงทำเฉพาะรายการไปก่อน (ข้อมูลชุดเดียวกัน)
 class _ShopList extends StatelessWidget {
   const _ShopList({required this.shops});
 

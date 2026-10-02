@@ -4,10 +4,10 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../config/app_colors.dart';
 import '../language/app_language.dart';
 
-/// แถบเลขหน้าแบบวงกลม — ตรรกะเดียวกับหน้าเว็บ (ProductsPage.vue)
-///
-/// หน้าน้อย (≤ 7) แสดงครบทุกเลข · มากกว่านั้นย่อด้วย … โดยคงไว้เสมอ:
-/// หน้าแรก, หน้าสุดท้าย, หน้าปัจจุบันพร้อมเพื่อนบ้านซ้ายขวา
+// แถบเลขหน้าแบบวงกลม — ตรรกะเดียวกับหน้าเว็บ (ProductsPage.vue)
+//
+// หน้าน้อย (≤ 7) แสดงครบทุกเลข · มากกว่านั้นย่อด้วย … โดยคงไว้เสมอ:
+// หน้าแรก, หน้าสุดท้าย, หน้าปัจจุบันพร้อมเพื่อนบ้านซ้ายขวา
 class PaginationBar extends StatelessWidget {
   const PaginationBar({
     super.key,
@@ -20,7 +20,7 @@ class PaginationBar extends StatelessWidget {
   final int totalPages;
   final ValueChanged<int> onChanged;
 
-  /// รายการที่จะแสดง: ตัวเลข หรือ null = จุดไข่ปลา
+  // รายการที่จะแสดง: ตัวเลข หรือ null = จุดไข่ปลา
   List<int?> get _pageNumbers {
     if (totalPages <= 7) {
       return List<int?>.generate(totalPages, (i) => i + 1);
@@ -159,7 +159,7 @@ class _ArrowButton extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  /// null = ปุ่มกดไม่ได้ (อยู่หน้าแรก/หน้าสุดท้ายแล้ว) จางลงเอง
+  // null = ปุ่มกดไม่ได้ (อยู่หน้าแรก/หน้าสุดท้ายแล้ว) จางลงเอง
   final VoidCallback? onPressed;
 
   @override

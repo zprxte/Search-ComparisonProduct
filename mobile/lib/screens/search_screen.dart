@@ -9,13 +9,13 @@ import '../services/api_service.dart';
 import '../stores/search_history.dart';
 import 'product_detail_screen.dart';
 
-/// หน้าค้นหา — หน้าตาตาม wireframe "Wireframe แอป DTC Compare" จอ Search:
-/// แถบบนเป็นปุ่มย้อนกลับ + ช่องค้นหาทรงแคปซูลขอบฟ้า
-/// ด้านล่างเป็นรายการคำแนะนำ (สูงสุด 8) ปิดท้ายด้วยแถว "ดูผลการค้นหาทั้งหมด"
+// หน้าค้นหา — หน้าตาตาม wireframe "Wireframe แอป DTC Compare" จอ Search:
+// แถบบนเป็นปุ่มย้อนกลับ + ช่องค้นหาทรงแคปซูลขอบฟ้า
+// ด้านล่างเป็นรายการคำแนะนำ (สูงสุด 8) ปิดท้ายด้วยแถว "ดูผลการค้นหาทั้งหมด"
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, this.initialQuery});
 
-  /// คำค้นเดิม (เปิดจากหน้าผลการค้นหา) — ใส่ในช่องให้เลย ผู้ใช้แก้ต่อได้
+  // คำค้นเดิม (เปิดจากหน้าผลการค้นหา) — ใส่ในช่องให้เลย ผู้ใช้แก้ต่อได้
   final String? initialQuery;
 
   @override
@@ -73,10 +73,10 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  /// ไม่ได้กดคำแนะนำ (กด Enter หรือแถว "ดูผลการค้นหาทั้งหมด")
-  /// → ส่งคำค้นกลับให้หน้าที่เปิดเรามา แล้วปิดตัวเอง
-  /// ผลการค้นหาไปแสดงในแท็บสินค้า (เหมือนเว็บที่ค้นแล้วไป /products?searchword=)
-  /// ไม่ใช่เปิดหน้าใหม่ทับ ไม่งั้นค้น 3 ครั้งจะมีหน้าซ้อนกัน 3 ชั้นและแถบแท็บหาย
+  // ไม่ได้กดคำแนะนำ (กด Enter หรือแถว "ดูผลการค้นหาทั้งหมด")
+  // → ส่งคำค้นกลับให้หน้าที่เปิดเรามา แล้วปิดตัวเอง
+  // ผลการค้นหาไปแสดงในแท็บสินค้า (เหมือนเว็บที่ค้นแล้วไป /products?searchword=)
+  // ไม่ใช่เปิดหน้าใหม่ทับ ไม่งั้นค้น 3 ครั้งจะมีหน้าซ้อนกัน 3 ชั้นและแถบแท็บหาย
   void _search(String word) {
     final q = word.trim();
     if (q.isEmpty) return;
@@ -159,9 +159,9 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  /// ประวัติที่มีคำค้นอยู่ข้างใน — ขึ้นต้นด้วยคำค้นมาก่อน ตามด้วยที่อยู่กลางคำ
-  /// จำกัด 3 คำ ไม่งั้นประวัติดันคำแนะนำสินค้าตกจอ
-  /// อยู่ในเครื่องอยู่แล้ว จึงโผล่ทันทีที่พิมพ์ ไม่ต้องรอ debounce
+  // ประวัติที่มีคำค้นอยู่ข้างใน — ขึ้นต้นด้วยคำค้นมาก่อน ตามด้วยที่อยู่กลางคำ
+  // จำกัด 3 คำ ไม่งั้นประวัติดันคำแนะนำสินค้าตกจอ
+  // อยู่ในเครื่องอยู่แล้ว จึงโผล่ทันทีที่พิมพ์ ไม่ต้องรอ debounce
   List<String> _matchingHistory(String query) {
     final q = query.toLowerCase();
     final starts = <String>[];
@@ -182,8 +182,8 @@ class _SearchScreenState extends State<SearchScreen> {
     if (mounted) setState(() => _history = items);
   }
 
-  /// แถวประวัติ 1 คำ: นาฬิกา, คำค้น (ส่วนที่ตรงเป็นตัวหนา), ✕ ลบออก
-  /// กดแถว = ค้นคำนั้นซ้ำทันที
+  // แถวประวัติ 1 คำ: นาฬิกา, คำค้น (ส่วนที่ตรงเป็นตัวหนา), ✕ ลบออก
+  // กดแถว = ค้นคำนั้นซ้ำทันที
   Widget _historyRow(String word, {String query = ''}) {
     return _SuggestionRow(
       icon: LucideIcons.history,
@@ -202,7 +202,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  /// ค้นหาล่าสุด — เก็บในเครื่อง 10 คำล่าสุด กดคำเดิมแล้วค้นซ้ำได้ทันที
+  // ค้นหาล่าสุด — เก็บในเครื่อง 10 คำล่าสุด กดคำเดิมแล้วค้นซ้ำได้ทันที
   Widget _historyList() {
     return ListView(
       padding: EdgeInsets.zero,
@@ -232,8 +232,8 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  /// ระหว่างพิมพ์ — ประวัติที่ตรง (นาฬิกา) → คำแนะนำสินค้า (แว่นขยาย)
-  /// รวมในรายการเดียวแบบ YouTube · ค้นทั้งคำ = กด Enter บนแป้นพิมพ์
+  // ระหว่างพิมพ์ — ประวัติที่ตรง (นาฬิกา) → คำแนะนำสินค้า (แว่นขยาย)
+  // รวมในรายการเดียวแบบ YouTube · ค้นทั้งคำ = กด Enter บนแป้นพิมพ์
   Widget _suggestionList(String query, List<String> matched) {
     return ListView(
       padding: EdgeInsets.zero,
@@ -293,7 +293,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-/// แถบบน: ปุ่มย้อนกลับ + ช่องค้นหาทรงแคปซูลขอบฟ้า (ตาม wireframe)
+// แถบบน: ปุ่มย้อนกลับ + ช่องค้นหาทรงแคปซูลขอบฟ้า (ตาม wireframe)
 class _SearchHeader extends StatelessWidget {
   const _SearchHeader({
     required this.controller,
@@ -377,8 +377,8 @@ class _SearchHeader extends StatelessWidget {
   }
 }
 
-/// แถวรายการสูง 52 — ใช้ทั้งประวัติ (นาฬิกา + ✕) และคำแนะนำสินค้า (แว่นขยาย)
-/// ส่วนที่ตรงกับคำค้นเป็นตัวหนา
+// แถวรายการสูง 52 — ใช้ทั้งประวัติ (นาฬิกา + ✕) และคำแนะนำสินค้า (แว่นขยาย)
+// ส่วนที่ตรงกับคำค้นเป็นตัวหนา
 class _SuggestionRow extends StatelessWidget {
   const _SuggestionRow({
     required this.icon,
@@ -394,12 +394,12 @@ class _SuggestionRow extends StatelessWidget {
   final String query;
   final VoidCallback onTap;
 
-  /// ไม่ส่ง = ไม่มีอะไรท้ายแถว
+  // ไม่ส่ง = ไม่มีอะไรท้ายแถว
   final Widget? trailing;
   final int maxLines;
 
-  /// ทำตัวหนาเฉพาะช่วงที่ตรงกับคำค้น (ไม่สนตัวพิมพ์เล็ก/ใหญ่)
-  /// ช่วยให้ผู้ใช้เห็นว่าทำไมรายการนี้ถึงขึ้นมา
+  // ทำตัวหนาเฉพาะช่วงที่ตรงกับคำค้น (ไม่สนตัวพิมพ์เล็ก/ใหญ่)
+  // ช่วยให้ผู้ใช้เห็นว่าทำไมรายการนี้ถึงขึ้นมา
   List<TextSpan> _spans() {
     final q = query.trim();
     if (q.isEmpty) return [TextSpan(text: name)];

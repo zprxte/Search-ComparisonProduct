@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart' show precisionErrorTolerance;
 import 'package:flutter/material.dart';
 
-/// ทำให้ตัวเลื่อน "หยุดตรงขอบช่อง" ตั้งแต่ตอนคำนวณแรงเฉื่อย
-/// แทนการปล่อยให้หยุดมั่วแล้วค่อยดีดตามทีหลัง (วิธีเดิมที่สั่งเลื่อนชนกันเอง)
+// ทำให้ตัวเลื่อน "หยุดตรงขอบช่อง" ตั้งแต่ตอนคำนวณแรงเฉื่อย
+// แทนการปล่อยให้หยุดมั่วแล้วค่อยดีดตามทีหลัง (วิธีเดิมที่สั่งเลื่อนชนกันเอง)
 class SnapScrollPhysics extends ScrollPhysics {
   const SnapScrollPhysics({required this.itemExtent, super.parent});
 

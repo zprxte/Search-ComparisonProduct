@@ -1,15 +1,15 @@
-/// สินค้าหนึ่งตัวจาก GET /products/compare
-/// เก็บเฉพาะที่ตารางใช้จริง: หัวคอลัมน์ + ค่าสเปค + โมเดลพร้อมค่าที่เขียนทับ
+// สินค้าหนึ่งตัวจาก GET /products/compare
+// เก็บเฉพาะที่ตารางใช้จริง: หัวคอลัมน์ + ค่าสเปค + โมเดลพร้อมค่าที่เขียนทับ
 class CompareProduct {
   final String productId;
   final String productName;
   final String? productImage;
   final num productPrice;
 
-  /// ชื่อหัวข้อสเปค → ค่าที่ใช้ร่วมทุกโมเดล เช่น {'ความละเอียด': '1080p'}
+  // ชื่อหัวข้อสเปค → ค่าที่ใช้ร่วมทุกโมเดล เช่น {'ความละเอียด': '1080p'}
   final Map<String, String> attributes;
 
-  /// โมเดลของสินค้าตัวนี้ (ว่าง = ไม่มีโมเดลให้เลือก)
+  // โมเดลของสินค้าตัวนี้ (ว่าง = ไม่มีโมเดลให้เลือก)
   final List<CompareModel> models;
 
   const CompareProduct({
@@ -21,8 +21,8 @@ class CompareProduct {
     required this.models,
   });
 
-  /// ค่าสเปคที่ต้องแสดงจริงของช่องหนึ่งช่อง
-  /// = ค่าร่วมของสินค้า แล้วให้ค่าเฉพาะโมเดลเขียนทับข้อที่ซ้ำกัน
+  // ค่าสเปคที่ต้องแสดงจริงของช่องหนึ่งช่อง
+  // = ค่าร่วมของสินค้า แล้วให้ค่าเฉพาะโมเดลเขียนทับข้อที่ซ้ำกัน
   Map<String, String> attributesFor(String? modelId) {
     if (modelId == null) return attributes;
     final model = modelById(modelId);
@@ -51,7 +51,7 @@ class CompareProduct {
   }
 }
 
-/// โมเดลหนึ่งตัว — ราคาของตัวเอง และสเปคเฉพาะข้อที่เขียนทับของสินค้า
+// โมเดลหนึ่งตัว — ราคาของตัวเอง และสเปคเฉพาะข้อที่เขียนทับของสินค้า
 class CompareModel {
   final String modelId;
   final String modelName;
@@ -73,8 +73,8 @@ class CompareModel {
   );
 }
 
-/// แปลงลิสต์ product_attribute_value ให้เป็น map ชื่อหัวข้อ → ค่า
-/// (backend ส่งรูปแบบเดียวกันทั้งของสินค้าและของโมเดล)
+// แปลงลิสต์ product_attribute_value ให้เป็น map ชื่อหัวข้อ → ค่า
+// (backend ส่งรูปแบบเดียวกันทั้งของสินค้าและของโมเดล)
 Map<String, String> parseAttributes(Object? raw) {
   final values = (raw as List?) ?? const [];
   final attributes = <String, String>{};

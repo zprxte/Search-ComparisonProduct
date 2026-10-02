@@ -23,8 +23,8 @@ class ProductPage {
   });
 }
 
-/// คำแนะนำ 1 รายการ — ใช้ได้ทั้ง autocomplete และ "คุณหมายถึง…?"
-/// มี productId เพื่อให้กดแล้วเข้าหน้าสินค้าได้เลย ไม่ต้องพิมพ์ค้นใหม่
+// คำแนะนำ 1 รายการ — ใช้ได้ทั้ง autocomplete และ "คุณหมายถึง…?"
+// มี productId เพื่อให้กดแล้วเข้าหน้าสินค้าได้เลย ไม่ต้องพิมพ์ค้นใหม่
 class SearchSuggestion {
   final String productId;
   final String productName;
@@ -50,10 +50,10 @@ class SearchResult {
   final int totalPages;
   final int total;
 
-  /// คำที่ระบบใช้ค้นจริงเมื่อกู้คำที่พิมพ์ผิดแป้นให้ (null = ใช้คำที่ผู้ใช้พิมพ์)
+  // คำที่ระบบใช้ค้นจริงเมื่อกู้คำที่พิมพ์ผิดแป้นให้ (null = ใช้คำที่ผู้ใช้พิมพ์)
   final String? searchedAs;
 
-  /// มีค่าเฉพาะตอนค้นไม่เจอ — เอาไปทำ "คุณหมายถึง…?"
+  // มีค่าเฉพาะตอนค้นไม่เจอ — เอาไปทำ "คุณหมายถึง…?"
   final List<SearchSuggestion> suggestions;
 
   const SearchResult({
@@ -101,8 +101,8 @@ class ApiService {
     return jsonDecode(utf8.decode(response.bodyBytes));
   }
 
-  /// ข้อมูลเต็มของสินค้าที่เลือกไว้ในตะกร้าเปรียบเทียบ (สเปคครบทุกหัวข้อ)
-  /// ใช้ /products/compare ไม่ใช่ /products/:id เพราะตัวนั้นนับยอดเข้าชมสินค้า
+  // ข้อมูลเต็มของสินค้าที่เลือกไว้ในตะกร้าเปรียบเทียบ (สเปคครบทุกหัวข้อ)
+  // ใช้ /products/compare ไม่ใช่ /products/:id เพราะตัวนั้นนับยอดเข้าชมสินค้า
   Future<List<CompareProduct>> fetchCompare(List<String> productIds) async {
     if (productIds.isEmpty) return [];
     final ids = productIds.map(Uri.encodeComponent).join(',');
@@ -113,8 +113,8 @@ class ApiService {
         .toList();
   }
 
-  /// ค้นหาสินค้า — ฝั่ง backend จัดการ fuzzy / พิมพ์ผิดแป้น / Caps Lock ให้หมด
-  /// แอปแค่ส่งคำที่ผู้ใช้พิมพ์ไปตรงๆ ไม่ต้องแปลงอะไรก่อน
+  // ค้นหาสินค้า — ฝั่ง backend จัดการ fuzzy / พิมพ์ผิดแป้น / Caps Lock ให้หมด
+  // แอปแค่ส่งคำที่ผู้ใช้พิมพ์ไปตรงๆ ไม่ต้องแปลงอะไรก่อน
   Future<SearchResult> searchProducts(
     String searchword, {
     int page = 1,
@@ -150,7 +150,7 @@ class ApiService {
     );
   }
 
-  /// คำแนะนำระหว่างพิมพ์ (ต้อง 2 ตัวอักษรขึ้นไป ไม่งั้น backend ตอบว่าง)
+  // คำแนะนำระหว่างพิมพ์ (ต้อง 2 ตัวอักษรขึ้นไป ไม่งั้น backend ตอบว่าง)
   Future<List<SearchSuggestion>> fetchAutocomplete(String searchword) async {
     if (searchword.trim().length < 2) return [];
     final q = Uri.encodeComponent(searchword.trim());
@@ -162,8 +162,8 @@ class ApiService {
         .toList();
   }
 
-  /// รายการตัวกรองที่มีจริงในฐานข้อมูล — backend คำนวณให้ทุกครั้ง
-  /// ไม่ได้ hardcode ฝั่งแอป เพิ่มสินค้า/แท็กใหม่แล้วตัวเลือกโผล่เอง
+  // รายการตัวกรองที่มีจริงในฐานข้อมูล — backend คำนวณให้ทุกครั้ง
+  // ไม่ได้ hardcode ฝั่งแอป เพิ่มสินค้า/แท็กใหม่แล้วตัวเลือกโผล่เอง
   Future<FilterOptions> fetchFilters() async {
     final json = await _getJson('/products/filters') as Map<String, dynamic>;
     return FilterOptions(
@@ -209,8 +209,8 @@ class ApiService {
     );
   }
 
-  /// ข้อมูลเต็มของสินค้า 1 ตัว — endpoint นี้นับยอดเข้าชมให้ด้วย
-  /// จึงเรียกเฉพาะตอนเปิดหน้ารายละเอียดจริงๆ เท่านั้น
+  // ข้อมูลเต็มของสินค้า 1 ตัว — endpoint นี้นับยอดเข้าชมให้ด้วย
+  // จึงเรียกเฉพาะตอนเปิดหน้ารายละเอียดจริงๆ เท่านั้น
   Future<ProductDetail> fetchProductDetail(String productId) async {
     final json = await _getJson(
       '/products/${Uri.encodeComponent(productId)}',

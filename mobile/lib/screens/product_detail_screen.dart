@@ -12,10 +12,10 @@ import '../utils/compare_actions.dart';
 import '../widgets/async_state.dart';
 import '../widgets/remote_image.dart';
 
-/// หน้ารายละเอียดสินค้า — ตาม wireframe จอ Detail:
-/// แถบบน (ย้อนกลับ — ไม่มีปุ่มแชร์ตามคำขอผู้ใช้ 25 ก.ย. 2026) → แกลเลอรีรูป → หมวดหมู่/ชื่อ/ราคารวม →
-/// เลือกโมเดล → ตัวเลือกเสริม → แท็บ สเปค/รายละเอียด/ประกัน-จัดส่ง →
-/// แถบปุ่มล่าง (+ เปรียบเทียบ | สั่งซื้อ)
+// หน้ารายละเอียดสินค้า — ตาม wireframe จอ Detail:
+// แถบบน (ย้อนกลับ — ไม่มีปุ่มแชร์ตามคำขอผู้ใช้ 25 ก.ย. 2026) → แกลเลอรีรูป → หมวดหมู่/ชื่อ/ราคารวม →
+// เลือกโมเดล → ตัวเลือกเสริม → แท็บ สเปค/รายละเอียด/ประกัน-จัดส่ง →
+// แถบปุ่มล่าง (+ เปรียบเทียบ | สั่งซื้อ)
 class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({super.key, required this.productId});
 
@@ -39,10 +39,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     _future = ApiService().fetchProductDetail(widget.productId);
   }
 
-  /// ราคารวม = ราคาโมเดลที่เลือก + ตัวเลือกเสริมที่ติ๊ก
-  /// สินค้าราคา 0 ("ติดต่อสอบถาม") ติ๊กตัวเลือกแล้วยังเป็นติดต่อสอบถาม
-  /// เหมือนฝั่งเว็บ — ไม่ใช่ราคาของตัวเลือกล้วนๆ ซึ่งจะทำให้เข้าใจผิด
-  /// โมเดลที่เลือกอยู่ (null = สินค้าไม่มีโมเดล)
+  // ราคารวม = ราคาโมเดลที่เลือก + ตัวเลือกเสริมที่ติ๊ก
+  // สินค้าราคา 0 ("ติดต่อสอบถาม") ติ๊กตัวเลือกแล้วยังเป็นติดต่อสอบถาม
+  // เหมือนฝั่งเว็บ — ไม่ใช่ราคาของตัวเลือกล้วนๆ ซึ่งจะทำให้เข้าใจผิด
+  // โมเดลที่เลือกอยู่ (null = สินค้าไม่มีโมเดล)
   ProductModelOption? _model(ProductDetail product) =>
       product.models.where((m) => m.modelId == _modelId).firstOrNull;
 
@@ -57,7 +57,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return total;
   }
 
-  /// สเปคที่แสดง = สเปคของสินค้า ทับด้วยสเปคเฉพาะโมเดลที่เลือก
+  // สเปคที่แสดง = สเปคของสินค้า ทับด้วยสเปคเฉพาะโมเดลที่เลือก
   List<ProductSpec> _specs(ProductDetail product) {
     final merged = <String, String>{};
     for (final spec in product.specs) {
@@ -499,7 +499,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  /// ปุ่มสั่งซื้อ = เลือกแพลตฟอร์ม (ระบบไม่มีตะกร้าของตัวเอง ส่งต่อร้านค้า)
+  // ปุ่มสั่งซื้อ = เลือกแพลตฟอร์ม (ระบบไม่มีตะกร้าของตัวเอง ส่งต่อร้านค้า)
   void _showStores(ProductDetail product) {
     showModalBottomSheet<void>(
       context: context,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// สีชุดเดียวกับฝั่งเว็บ — คัดมาจาก frontend/tailwind.config.js
-/// brand = ฟ้า DTC, navy = สีตัวอักษรเข้ม
+// สีชุดเดียวกับฝั่งเว็บ — คัดมาจาก frontend/tailwind.config.js
+// brand = ฟ้า DTC, navy = สีตัวอักษรเข้ม
 class AppColors {
   static const brand50 = Color(0xFFE6F7FD);
   static const brand100 = Color(0xFFC2ECF9);

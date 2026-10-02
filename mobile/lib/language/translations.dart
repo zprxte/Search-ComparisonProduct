@@ -4,7 +4,7 @@ const List<({String code, String badge, String label})> appLanguages = [
   (code: 'ja', badge: 'JP', label: '日本語'),
 ];
 
-/// ตัวอักษรบนป้ายของภาษาที่เลือกอยู่ (ใช้บนปุ่มใน AppBar)
+// ตัวอักษรบนป้ายของภาษาที่เลือกอยู่ (ใช้บนปุ่มใน AppBar)
 String languageBadge(String code) {
   for (final lang in appLanguages) {
     if (lang.code == code) return lang.badge;

@@ -5,16 +5,16 @@ import '../config/app_colors.dart';
 import '../language/app_language.dart';
 import 'sheet_scaffold.dart';
 
-/// ไม่ได้เรียงตามอะไร
+// ไม่ได้เรียงตามอะไร
 const String compareSortNone = '';
 
-/// เรียงตามราคา — ราคาอยู่ในหัวคอลัมน์ ไม่ใช่แถวสเปค จึงต้องมีคีย์พิเศษของตัวเอง
-/// (ใช้ชื่อที่ชนกับชื่อหัวข้อสเปคจริงไม่ได้ เลยครอบด้วยขีดล่างสองตัวแบบฝั่งเว็บ)
+// เรียงตามราคา — ราคาอยู่ในหัวคอลัมน์ ไม่ใช่แถวสเปค จึงต้องมีคีย์พิเศษของตัวเอง
+// (ใช้ชื่อที่ชนกับชื่อหัวข้อสเปคจริงไม่ได้ เลยครอบด้วยขีดล่างสองตัวแบบฝั่งเว็บ)
 const String compareSortPrice = '__price__';
 
-/// ค่าตัวกรองของตารางเปรียบเทียบทั้งชุด — ส่งเข้า/ออกจากแผ่นตัวกรองเป็นก้อนเดียว
-/// เหมือนฝั่งเว็บ (`ComparePage.vue`): ติ๊กคุณสมบัติ = จัดอันดับคอลัมน์
-/// ไม่ใช่ซ่อนสินค้าออกจากตาราง — สินค้าที่ไม่มีคุณสมบัตินั้นยังอยู่ แค่ถูกดันไปขวา
+// ค่าตัวกรองของตารางเปรียบเทียบทั้งชุด — ส่งเข้า/ออกจากแผ่นตัวกรองเป็นก้อนเดียว
+// เหมือนฝั่งเว็บ (`ComparePage.vue`): ติ๊กคุณสมบัติ = จัดอันดับคอลัมน์
+// ไม่ใช่ซ่อนสินค้าออกจากตาราง — สินค้าที่ไม่มีคุณสมบัตินั้นยังอยู่ แค่ถูกดันไปขวา
 @immutable
 class CompareFilter {
   const CompareFilter({
@@ -25,18 +25,18 @@ class CompareFilter {
     this.onlySelected = false,
   });
 
-  /// คุณสมบัติที่ผู้ใช้ติ๊กว่าต้องการ (ใช้นับคะแนนความตรงของแต่ละคอลัมน์)
+  // คุณสมบัติที่ผู้ใช้ติ๊กว่าต้องการ (ใช้นับคะแนนความตรงของแต่ละคอลัมน์)
   final Set<String> features;
 
-  /// หัวข้อที่ใช้เรียงคอลัมน์ — ชื่อสเปค, [compareSortPrice] หรือ [compareSortNone]
+  // หัวข้อที่ใช้เรียงคอลัมน์ — ชื่อสเปค, [compareSortPrice] หรือ [compareSortNone]
   final String sortField;
   final bool sortAscending;
 
-  /// ซ่อนแถวที่ทุกคอลัมน์มีค่าเท่ากัน
+  // ซ่อนแถวที่ทุกคอลัมน์มีค่าเท่ากัน
   final bool onlyDifferences;
 
-  /// แสดงเฉพาะแถวของคุณสมบัติที่ติ๊กไว้ — ของเพิ่มเฉพาะแอป
-  /// (จอมือถือเห็นทีละไม่กี่แถว สเปค 30 หัวข้อทำให้ต้องเลื่อนหาหัวข้อที่สนใจนาน)
+  // แสดงเฉพาะแถวของคุณสมบัติที่ติ๊กไว้ — ของเพิ่มเฉพาะแอป
+  // (จอมือถือเห็นทีละไม่กี่แถว สเปค 30 หัวข้อทำให้ต้องเลื่อนหาหัวข้อที่สนใจนาน)
   final bool onlySelected;
 
   bool get isActive =>
@@ -45,8 +45,8 @@ class CompareFilter {
       onlyDifferences ||
       onlySelected;
 
-  /// ตัวเลขบนปุ่มตัวกรอง — นับเฉพาะสิ่งที่ผู้ใช้ตั้งเอง
-  /// (การเรียงตามสเปคมาพร้อมการติ๊กคุณสมบัติอยู่แล้ว ไม่นับซ้ำ)
+  // ตัวเลขบนปุ่มตัวกรอง — นับเฉพาะสิ่งที่ผู้ใช้ตั้งเอง
+  // (การเรียงตามสเปคมาพร้อมการติ๊กคุณสมบัติอยู่แล้ว ไม่นับซ้ำ)
   int get badgeCount =>
       features.length +
       (sortField == compareSortPrice ? 1 : 0) +
@@ -70,8 +70,8 @@ class CompareFilter {
   }
 }
 
-/// แผ่นตัวกรองของหน้าเปรียบเทียบ — คืนค่าที่ตั้งใหม่เมื่อกด "ดูผลลัพธ์"
-/// คืน null ถ้าผู้ใช้ปัดปิดทิ้ง (ของเดิมไม่ถูกแตะ)
+// แผ่นตัวกรองของหน้าเปรียบเทียบ — คืนค่าที่ตั้งใหม่เมื่อกด "ดูผลลัพธ์"
+// คืน null ถ้าผู้ใช้ปัดปิดทิ้ง (ของเดิมไม่ถูกแตะ)
 Future<CompareFilter?> showCompareFilterSheet(
   BuildContext context, {
   required List<String> attributeNames,
@@ -106,10 +106,10 @@ class _CompareFilterSheet extends StatefulWidget {
 
   final List<String> attributeNames;
 
-  /// หัวข้อที่อ่านเป็นตัวเลขได้อย่างน้อย 2 คอลัมน์ — มีเฉพาะพวกนี้ที่เรียงลำดับได้จริง
+  // หัวข้อที่อ่านเป็นตัวเลขได้อย่างน้อย 2 คอลัมน์ — มีเฉพาะพวกนี้ที่เรียงลำดับได้จริง
   final Set<String> computableNames;
 
-  /// หัวข้อที่ทุกคอลัมน์มีค่าเท่ากัน (ใช้ซ่อนตามสวิตช์ "เฉพาะที่ต่างกัน")
+  // หัวข้อที่ทุกคอลัมน์มีค่าเท่ากัน (ใช้ซ่อนตามสวิตช์ "เฉพาะที่ต่างกัน")
   final Set<String> sameNames;
 
   final CompareFilter current;
@@ -125,8 +125,8 @@ class _CompareFilterSheetState extends State<_CompareFilterSheet> {
   late bool _onlyDifferences = widget.current.onlyDifferences;
   late bool _onlySelected = widget.current.onlySelected;
 
-  /// ติ๊กคุณสมบัติที่เรียงลำดับได้ = ตั้งให้เป็นตัวเรียงอัตโนมัติ (มาก→น้อยก่อน)
-  /// เหมือนเว็บ — ผู้ใช้ที่สนใจ "ความละเอียด" ย่อมอยากเห็นตัวที่สูงสุดก่อน
+  // ติ๊กคุณสมบัติที่เรียงลำดับได้ = ตั้งให้เป็นตัวเรียงอัตโนมัติ (มาก→น้อยก่อน)
+  // เหมือนเว็บ — ผู้ใช้ที่สนใจ "ความละเอียด" ย่อมอยากเห็นตัวที่สูงสุดก่อน
   void _toggleFeature(String name) {
     setState(() {
       if (_features.remove(name)) {
@@ -170,9 +170,9 @@ class _CompareFilterSheetState extends State<_CompareFilterSheet> {
     });
   }
 
-  /// เปิด "เฉพาะที่ต่างกัน" แล้วหัวข้อที่ทุกตัวเท่ากันก็ไม่ช่วยจัดอันดับอะไร
-  /// ซ่อนออกจากรายการด้วย — ยกเว้นหัวข้อที่ติ๊กค้างไว้ ต้องเห็นเสมอ
-  /// ไม่งั้นตัวกรองที่ทำงานอยู่จะหายไปจากสายตาแต่ยังนับอยู่ในคะแนน
+  // เปิด "เฉพาะที่ต่างกัน" แล้วหัวข้อที่ทุกตัวเท่ากันก็ไม่ช่วยจัดอันดับอะไร
+  // ซ่อนออกจากรายการด้วย — ยกเว้นหัวข้อที่ติ๊กค้างไว้ ต้องเห็นเสมอ
+  // ไม่งั้นตัวกรองที่ทำงานอยู่จะหายไปจากสายตาแต่ยังนับอยู่ในคะแนน
   List<String> get _visibleNames => widget.attributeNames
       .where(
         (name) =>
@@ -285,7 +285,7 @@ class _CompareFilterSheetState extends State<_CompareFilterSheet> {
   );
 }
 
-/// แถวคุณสมบัติหนึ่งข้อ: ติ๊กเลือก + ตัวเลือกการเรียง (เฉพาะข้อที่เป็นตัวเลข)
+// แถวคุณสมบัติหนึ่งข้อ: ติ๊กเลือก + ตัวเลือกการเรียง (เฉพาะข้อที่เป็นตัวเลข)
 class _FeatureRow extends StatelessWidget {
   const _FeatureRow({
     required this.name,
@@ -299,7 +299,7 @@ class _FeatureRow extends StatelessWidget {
   final bool selected;
   final VoidCallback onToggle;
 
-  /// null = หัวข้อนี้เรียงลำดับไม่ได้ (เป็นข้อความล้วน) จึงไม่มี dropdown
+  // null = หัวข้อนี้เรียงลำดับไม่ได้ (เป็นข้อความล้วน) จึงไม่มี dropdown
   final String? sortValue;
   final ValueChanged<String?> onSortChanged;
 
@@ -342,7 +342,7 @@ class _FeatureRow extends StatelessWidget {
   }
 }
 
-/// แถวเรียงลำดับที่ไม่มี checkbox (ใช้กับราคา ซึ่งไม่ใช่หัวข้อสเปค)
+// แถวเรียงลำดับที่ไม่มี checkbox (ใช้กับราคา ซึ่งไม่ใช่หัวข้อสเปค)
 class _SortRow extends StatelessWidget {
   const _SortRow({
     required this.label,

@@ -1,4 +1,4 @@
-/// ตัวเลือกหนึ่งอันในตัวกรอง (หมวดหมู่ หรือ แท็ก) จาก GET /products/filters
+// ตัวเลือกหนึ่งอันในตัวกรอง (หมวดหมู่ หรือ แท็ก) จาก GET /products/filters
 class FilterOption {
   final String value; // category_id หรือชื่อแท็ก
   final String label; // ข้อความที่แสดง
@@ -23,7 +23,7 @@ class FilterOption {
   );
 }
 
-/// ตัวเลือกทั้งหมดที่หน้าสินค้าเอาไปทำตัวกรอง
+// ตัวเลือกทั้งหมดที่หน้าสินค้าเอาไปทำตัวกรอง
 class FilterOptions {
   final List<FilterOption> categories;
   final List<FilterOption> tags;
@@ -31,7 +31,7 @@ class FilterOptions {
   const FilterOptions({required this.categories, required this.tags});
 }
 
-/// ค่าที่ผู้ใช้เลือกอยู่ตอนนี้
+// ค่าที่ผู้ใช้เลือกอยู่ตอนนี้
 class ProductFilters {
   final Set<String> categoryIds;
   final Set<String> tags;
@@ -45,8 +45,8 @@ class ProductFilters {
 
   int get activeCount => categoryIds.length + tags.length;
 
-  /// ค่าเริ่มต้นของแต่ละหน้า: ผลการค้นหาเรียงตามความตรงกับคำค้น
-  /// ส่วนหน้าสินค้าทั้งหมดเรียงใหม่ล่าสุด (เหมือนเว็บ)
+  // ค่าเริ่มต้นของแต่ละหน้า: ผลการค้นหาเรียงตามความตรงกับคำค้น
+  // ส่วนหน้าสินค้าทั้งหมดเรียงใหม่ล่าสุด (เหมือนเว็บ)
   static ProductFilters initial({required bool isSearch}) =>
       ProductFilters(sort: isSearch ? 'relevance' : 'newest');
 
@@ -61,9 +61,9 @@ class ProductFilters {
   );
 }
 
-/// ค่าเรียงลำดับที่ backend รับ → คีย์ข้อความในโมดูลภาษา (ส่งเข้า langs())
-/// เก็บเป็นคีย์ ไม่ใช่ข้อความตรงๆ เพราะป้ายต้องเปลี่ยนตามภาษาที่เลือก
-/// 'relevance' ใช้ได้เฉพาะตอนค้นหา (ไม่มีคำค้นก็ไม่มีอะไรให้วัดความตรง)
+// ค่าเรียงลำดับที่ backend รับ → คีย์ข้อความในโมดูลภาษา (ส่งเข้า langs())
+// เก็บเป็นคีย์ ไม่ใช่ข้อความตรงๆ เพราะป้ายต้องเปลี่ยนตามภาษาที่เลือก
+// 'relevance' ใช้ได้เฉพาะตอนค้นหา (ไม่มีคำค้นก็ไม่มีอะไรให้วัดความตรง)
 const sortLabels = {
   'relevance': 'sortRelevance',
   'newest': 'sortNewest',

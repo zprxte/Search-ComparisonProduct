@@ -104,7 +104,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  /// ป้ายตัวเลขบอกจำนวนสินค้าในตะกร้าเปรียบเทียบ อัปเดตเองทันที
+  // ป้ายตัวเลขบอกจำนวนสินค้าในตะกร้าเปรียบเทียบ อัปเดตเองทันที
   Widget _compareBadge(Widget icon) {
     return ValueListenableBuilder<List<CompareItem>>(
       valueListenable: CompareStore.instance.items,

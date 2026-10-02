@@ -1,4 +1,4 @@
-/// สินค้าหนึ่งตัวแบบเต็ม (จาก GET /products/:id) — ใช้ในหน้ารายละเอียดสินค้า
+// สินค้าหนึ่งตัวแบบเต็ม (จาก GET /products/:id) — ใช้ในหน้ารายละเอียดสินค้า
 class ProductDetail {
   final String productId;
   final String productName;
@@ -73,7 +73,7 @@ class ProductDetail {
   }
 }
 
-/// โมเดลของสินค้า — เลือกแล้วราคาเปลี่ยน และสเปคบางข้อถูก override
+// โมเดลของสินค้า — เลือกแล้วราคาเปลี่ยน และสเปคบางข้อถูก override
 class ProductModelOption {
   final String modelId;
   final String modelName;
@@ -98,7 +98,7 @@ class ProductModelOption {
       );
 }
 
-/// อุปกรณ์เสริม เช่น SD Card — ติ๊กแล้วบวกราคาเพิ่ม
+// อุปกรณ์เสริม เช่น SD Card — ติ๊กแล้วบวกราคาเพิ่ม
 class ProductAddon {
   final String optionId;
   final String optionName;
@@ -117,7 +117,7 @@ class ProductAddon {
   );
 }
 
-/// สเปค 1 ข้อ (หัวข้อ + ค่า)
+// สเปค 1 ข้อ (หัวข้อ + ค่า)
 class ProductSpec {
   final String name;
   final String value;

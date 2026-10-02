@@ -53,17 +53,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
         .catchError((Object _) {}); // โหลดตัวกรองพังก็ยังดูสินค้าได้ตามปกติ
   }
 
-  /// ตัวกรองเริ่มต้นของคำสั่งล่าสุดจาก MainScreen
-  /// หมวดที่กดมาจากหน้าแรกถูกยัดเป็น "ตัวกรองที่ติ๊กไว้ให้แล้ว" ไม่ใช่เงื่อนไขซ่อน
-  /// ผู้ใช้จึงเห็นเป็นชิปและกดกากบาทเอาออกได้เหมือนติ๊กเอง (เหมือนเว็บ)
+  // ตัวกรองเริ่มต้นของคำสั่งล่าสุดจาก MainScreen
+  // หมวดที่กดมาจากหน้าแรกถูกยัดเป็น "ตัวกรองที่ติ๊กไว้ให้แล้ว" ไม่ใช่เงื่อนไขซ่อน
+  // ผู้ใช้จึงเห็นเป็นชิปและกดกากบาทเอาออกได้เหมือนติ๊กเอง (เหมือนเว็บ)
   ProductFilters _filtersForRequest() {
     final categoryId = widget.initialCategoryId;
     return ProductFilters.initial(isSearch: _isSearch)
         .copyWith(categoryIds: categoryId == null ? null : {categoryId});
   }
 
-  /// หน้านี้อยู่ใน IndexedStack จึงไม่ถูกสร้างใหม่ตอนสลับแท็บ
-  /// การกดหมวดหมู่ครั้งใหม่มาถึงที่นี่แทน initState
+  // หน้านี้อยู่ใน IndexedStack จึงไม่ถูกสร้างใหม่ตอนสลับแท็บ
+  // การกดหมวดหมู่ครั้งใหม่มาถึงที่นี่แทน initState
   @override
   void didUpdateWidget(ProductsScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -86,10 +86,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
     super.dispose();
   }
 
-  /// คำที่ระบบใช้ค้นจริงเมื่อกู้คำพิมพ์ผิดแป้นให้ (null = ใช้คำที่ผู้ใช้พิมพ์)
+  // คำที่ระบบใช้ค้นจริงเมื่อกู้คำพิมพ์ผิดแป้นให้ (null = ใช้คำที่ผู้ใช้พิมพ์)
   String? _searchedAs;
 
-  /// คำแนะนำ "คุณหมายถึง…?" — มีค่าเฉพาะตอนค้นแล้วไม่เจอ
+  // คำแนะนำ "คุณหมายถึง…?" — มีค่าเฉพาะตอนค้นแล้วไม่เจอ
   List<SearchSuggestion> _suggestions = [];
 
   late ProductFilters _filters;
@@ -128,11 +128,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
-  /// คำค้นที่หน้านี้กำลังแสดงผลอยู่ (null = โหมดสินค้าทั้งหมด)
-  /// เป็น state ไม่ใช่ prop เพราะผู้ใช้ล้างคำค้นทิ้งจากชิปได้เอง
+  // คำค้นที่หน้านี้กำลังแสดงผลอยู่ (null = โหมดสินค้าทั้งหมด)
+  // เป็น state ไม่ใช่ prop เพราะผู้ใช้ล้างคำค้นทิ้งจากชิปได้เอง
   String? _searchword;
 
-  /// ออกจากโหมดผลการค้นหา กลับไปแสดงสินค้าทั้งหมด (ตัวกรองที่ติ๊กไว้ยังอยู่)
+  // ออกจากโหมดผลการค้นหา กลับไปแสดงสินค้าทั้งหมด (ตัวกรองที่ติ๊กไว้ยังอยู่)
   void _clearSearch() {
     setState(() {
       _searchword = null;
@@ -204,8 +204,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
     if (_gridController.hasClients) _gridController.jumpTo(0);
   }
 
-  /// หัวรายการตาม wireframe: ช่องค้นหา → ปุ่มตัวกรอง/เรียง + จำนวนรายการ
-  /// → ชิปของที่เลือกไว้ (กดกากบาทเอาออกได้ทันที)
+  // หัวรายการตาม wireframe: ช่องค้นหา → ปุ่มตัวกรอง/เรียง + จำนวนรายการ
+  // → ชิปของที่เลือกไว้ (กดกากบาทเอาออกได้ทันที)
   Widget _filterHeader() {
     final hasChips =
         _isSearch ||
