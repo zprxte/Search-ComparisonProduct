@@ -35,3 +35,7 @@ skills-lock.json
 ~$*
 # ภาพหน้าจอจากการทดสอบ
 frontend/scroll-after.png
+
+# เก็บไว้ในเครื่องเท่านั้น ไม่ขึ้น GitHub (ลบออกจาก repo 2 ต.ค. 2026)
+docs/
+database/banner/
